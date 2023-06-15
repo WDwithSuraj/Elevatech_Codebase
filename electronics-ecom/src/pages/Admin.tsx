@@ -18,19 +18,19 @@ export const Admin = () => {
        </div>
        <div className="adminMainContent">
         <div className="admiForm">
-          <label>School Name  : 
+          <label>Product Image  : 
                 <input type="text" placeholder='Enter your school name' />
             </label><br />
             <label>Name  : 
                 <input type="text" placeholder='Enter your name' />
             </label><br />
-            <label>Father's Name  : 
+            <label>Price
                 <input type="text" placeholder='Enter your fathers name' />
             </label><br />
-            <label>Mothers's Name  : 
+            <label>RAM : 
                 <input type="text" placeholder='Enter your mothers name' />
             </label><br />
-            <label>Date of birth  : 
+            <label>ROM : 
                 <input type="date" />
             </label><br />
             <label>
