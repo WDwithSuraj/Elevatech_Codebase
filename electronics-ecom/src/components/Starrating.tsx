@@ -19,7 +19,7 @@ const Starrating = ({ rating, review }: StarRatingType) => {
 
         let numbers = index + 0.5
 
-        return <span>
+        return <span key={index+1}>
             {
                 rating >= index + 1 ? <FaStar /> :
                     rating >= numbers ? <FaStarHalfAlt /> :
@@ -29,9 +29,13 @@ const Starrating = ({ rating, review }: StarRatingType) => {
     })
 
     return (
-        <div style={{color:"orange"}}>
+        
+        <span style={{color:"red"}}>
             {ratingStar}
-        </div>
+         
+        </span>
+       
+        
 
     )
 }
