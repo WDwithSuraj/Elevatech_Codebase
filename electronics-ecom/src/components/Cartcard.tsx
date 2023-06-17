@@ -47,7 +47,7 @@ const Cartcard = ({ image, id, category, brand, price, handledelete, quantity }:
                     <p style={{ marginLeft: "20%" }}>₹ {price * quantity}</p>
 
                 </div>
-                <div> <RiDeleteBin5Fill onClick={handleremove} id={"id"} style={{ marginTop: "14px", color: "red", marginLeft: "20%", fontSize: "26px" }} /></div>
+                <div> <RiDeleteBin5Fill onClick={handleremove} id={"id"} style={{ cursor:"pointer", marginTop: "14px", color: "red", marginLeft: "20%", fontSize: "26px" }} /></div>
 
             </div>
             <hr />
