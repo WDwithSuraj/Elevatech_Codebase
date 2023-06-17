@@ -81,10 +81,7 @@ const ACTOR = styled.div`
     margin: 0;
     padding: 0;
   };
-  div h2 {
-    margin: 0;
-    padding: 0;
-  }
+ 
   
 `
 const HOMEImage = styled.div`

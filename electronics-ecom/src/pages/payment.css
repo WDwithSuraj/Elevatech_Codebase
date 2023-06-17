@@ -1,0 +1,74 @@
+.payment-page {
+  display: flex;
+  justify-content:space-between;
+  margin: auto;
+  width: 80%;
+  height: 98%;
+  margin-top: 5%;
+}
+
+.payment-options{
+  width: 40%;
+  border: 1px solid gainsboro;
+}
+
+.payment-options > h1{
+  font-size: 20px;
+  font-weight: 550;
+  margin-bottom: 2%;
+  padding: 1%;
+  border: 1px solid gainsboro;
+}
+
+.payment-options>div{
+  display: flex;
+  justify-content: space-around;
+  padding: 0%;
+  font-size: 16px;
+}
+
+.payment-options>div>div>h3{
+  font-size: 20px ;
+  padding: 6%;
+}
+
+.payersImg {
+  width: 20%
+} 
+
+.pay-now-btn{
+border: 1px solid teal;
+background-color: teal;
+color: white;
+width: 25%;
+height: 30px;
+border-radius: 20px;
+margin: 2%
+}
+
+.credit-card-option>h1{
+font-size: 28px;
+font-weight: 650;
+padding: 5%;
+}
+
+.price-details{
+  width: 40%;
+  border: 1px solid gainsboro;
+  height: 40%;
+}
+
+.price-details > h2{
+ font-size: 20px;
+  font-weight: 550;
+  margin-bottom: 3%;
+  padding: 2%;
+  border: 1px solid gainsboro;
+}
+
+.price-details>div{
+  display: flex;
+  justify-content: space-around;
+  padding: 6%;
+  font-size: 16px;
+}

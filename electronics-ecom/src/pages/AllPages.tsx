@@ -9,7 +9,11 @@ import Singleproductpage from '../components/Singleproductpage'
 
 
 import { Admin } from './Admin'
+
 import Cartpage from './Cartpage'
+
+import Payment from './Payment'
+
 
 
 export const AllPages = () => {
@@ -22,6 +26,11 @@ export const AllPages = () => {
         {/* //put single product page inside private route  */}
         <Route path='/products/:user_id' element={<Singleproductpage />} />
         <Route path='/admin' element={<Admin/>}/>
+
+        <Route path='/payment' element={<Payment/>}/>
+        <Route path="*" element={<h2>Page not found</h2>}/>
+
+
       </Routes>
     )
 }

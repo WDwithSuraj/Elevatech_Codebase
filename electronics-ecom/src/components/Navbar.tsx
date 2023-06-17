@@ -1,25 +1,48 @@
 import React, { useState } from 'react'
 import logo from "../Images/elevateTechLogo.png"
+
 import styled from 'styled-components'
+
+import {useNavigate, Link} from "react-router-dom"
+
 export const Navbar = () => {
+
+  const navigate = useNavigate();
 
   return (
     <DIV>
+
       <div className="logo">
         <img src={logo} alt="" />
       </div>
       <div className="navLIst">
         <div className='navSearchBox'>
+
+        <div className="logo" onClick={()=> navigate("/")} >
+            <img src={logo} alt="" />
+        </div>
+         <div className="navLIst">
+         <div className='navSearchBox'>
+
           <label>
             <input type="search" placeholder='Try headphones!' />
             <i className="fa-solid fa-magnifying-glass"></i>
           </label>
+
         </div>
         <h3>Products</h3>
         <h3>About us</h3>
         <h3>Login<i className="fa-solid fa-user"></i></h3>
         <h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3>
       </div>
+
+         </div>
+          <Link style={{textDecoration : "none"}} to="/products"><h3>Products</h3></Link>
+           <h3>About us</h3>
+           <h3>Login<i className="fa-solid fa-user"></i></h3>
+            <Link style={{textDecoration : "none"}} to="/products/cart"><h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3></Link>
+         </div>
+
     </DIV>
   )
 }
@@ -44,11 +67,13 @@ margin-bottom:50px;
   .logo{
     width: 18%;
     padding: 7px;
+    cursor: pointer;
   };
   .logo img {
     width: 100%;
     margin-left: 5px;
   };
+ 
   .navLIst {
 
     display: flex;
@@ -59,6 +84,7 @@ margin-bottom:50px;
   };
    .navLIst h3 {
       padding: 5px;
+      cursor: pointer;
    };
 
   .navLIst h3:hover {
