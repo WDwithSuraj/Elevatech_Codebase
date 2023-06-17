@@ -1,32 +1,39 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import logo from "../Images/elevateTechLogo.png"
-import { styled } from 'styled-components'
+import styled from 'styled-components'
 export const Navbar = () => {
 
   return (
     <DIV>
-        <div className="logo">
-            <img src={logo} alt="" />
-        </div>
-         <div className="navLIst">
-         <div className='navSearchBox'>
+      <div className="logo">
+        <img src={logo} alt="" />
+      </div>
+      <div className="navLIst">
+        <div className='navSearchBox'>
           <label>
-              <input type="search" placeholder='Try headphones!' />
-              <i className="fa-solid fa-magnifying-glass"></i>
+            <input type="search" placeholder='Try headphones!' />
+            <i className="fa-solid fa-magnifying-glass"></i>
           </label>
-         </div>
-           <h3>Products</h3>
-           <h3>About us</h3>
-           <h3>Login<i className="fa-solid fa-user"></i></h3>
-           <h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3>
-         </div>
+        </div>
+        <h3>Products</h3>
+        <h3>About us</h3>
+        <h3>Login<i className="fa-solid fa-user"></i></h3>
+        <h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3>
+      </div>
     </DIV>
   )
 }
- 
+
 
 
 const DIV = styled.div`
+
+position:sticky;
+top:0px;
+z-index:1;
+background:white;
+margin-bottom:50px;
+
 
   display: flex;
   justify-content: space-between;

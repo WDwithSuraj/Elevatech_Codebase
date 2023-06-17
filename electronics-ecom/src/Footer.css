@@ -1,0 +1,63 @@
+
+/* footer section */
+
+*{
+    margin:0px;
+    
+}
+
+.outer_footer_section {
+    /* background-image: linear-gradient(to bottom, rgba(36, 174, 177, 0) 50%, rgba(36, 174, 177, .7) 130%), linear-gradient(to bottom, #fff, #fff); */
+    background: #fceabb;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f8b500, #fceabb);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f8b500, #fceabb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.footer_section {
+
+    padding: 45px 0px;
+    display: grid;
+    /* border: 2px solid red; */
+    width: 95%;
+    margin: auto;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.inner_footer_section_spans {
+    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* border: 2px solid green; */
+}
+
+.inner_footer_section_spans_last {
+    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* border: 2px solid green; */
+    padding-bottom: 15px;
+}
+
+
+.inner_payment_partners {
+    /* border: 2px solid brown; */
+    padding: 40px 0px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 85%;
+    gap: 15px;
+    margin: auto;
+
+
+}
+
+
+
+/* .footer_section{
+     padding-bottom: 0px;
+    margin-bottom: 0px;
+} */
+
+
+

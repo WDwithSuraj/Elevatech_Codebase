@@ -2,6 +2,7 @@ import React from 'react'
 import { ImageSlider } from '../components/ImageSlider'
 import { Crausel } from '../components/Crausel'
 import styled from 'styled-components'
+import Footer from '../components/Footer'
 export const Home = () => {
 
 
@@ -42,6 +43,7 @@ export const Home = () => {
           </div>
         </ACTOR>
       </div>
+      <Footer />
     </>
   )
 }
