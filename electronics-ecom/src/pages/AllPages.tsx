@@ -9,6 +9,7 @@ import Cartrpage from './Cartpage'
 
 
 import { Admin } from './Admin'
+import Payment from './Payment'
 
 
 export const AllPages = () => {
@@ -20,12 +21,8 @@ export const AllPages = () => {
         <Route path='/products/cart' element={<Cartrpage/>} />
         {/* //put single product page inside private route  */}
         <Route path='/products/:user_id' element={<Singleproductpage />} />
-
-
-        {/* //put single product page inside private route  */}
-        <Route path='/products/:id' element={<Singleproductpage />} />
-
         <Route path='/admin' element={<Admin/>}/>
+        <Route path='/payment' element={<Payment/>}/>
 
 
       </Routes>
