@@ -85,6 +85,10 @@ const DIV = styled.div`
     };
     .fa-user {
       margin: 5px;
+
+
+
+      
     }
 
     
