@@ -23,7 +23,7 @@ export const AllPages = () => {
         <Route path='/products/:user_id' element={<Singleproductpage />} />
         <Route path='/admin' element={<Admin/>}/>
         <Route path='/payment' element={<Payment/>}/>
-
+        <Route path="*" element={<h2>Page not found</h2>}/>
 
       </Routes>
     )
