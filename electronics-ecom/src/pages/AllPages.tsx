@@ -29,7 +29,7 @@ export const AllPages = () => {
         <Route path='/admin' element={<Admin/>}/>
 
         <Route path='/payment' element={<Payment/>}/>
-        <Route path="*" element={<h2>Page not found</h2>}/>
+        <Route path="*" element={<h2>Page not found 404</h2>}/>
 
 
       </Routes>
