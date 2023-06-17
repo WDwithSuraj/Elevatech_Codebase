@@ -32,9 +32,9 @@
   padding: 6%;
 }
 
-img{
+.payersImg {
   width: 20%
-}
+} 
 
 .pay-now-btn{
 border: 1px solid teal;

@@ -2,7 +2,8 @@ import React from 'react'
 import { RootState } from '../redux/store'
 import { useDispatch, useSelector } from 'react-redux'
 import Cartcard from "../components/Cartcard"
-import { deleteaction } from '../redux/action'
+import {Link} from "react-router-dom"
+import { deleteaction, getCartTotal } from '../redux/action'
 
 const Cartrpage = () => {
 
@@ -24,10 +25,15 @@ const Cartrpage = () => {
     }
 
 
+    const handleCartAmt = () => {
+        dispatch(getCartTotal(totalamount))
+    }
+
     return (
         <div style={{ position: "relative" }}>
             <div style={{ width: "45%", textAlign: "start", top: "20px", position: "absolute", left: "25%" }}>
                 <h2>Shopping Cart</h2>
+                <Link to="/payment">Pay</Link>
                 <h3>You have <span style={{ color: "red" }}>{getCartData.length}</span> items in your cart</h3>
             </div>
             {
@@ -62,7 +68,7 @@ const Cartrpage = () => {
                         </div>
                         <div style={{ width: "25%", marginTop: "14px" }}>
                             <h3 style={{ borderRadius: "4px", textAlign: "start", backgroundColor: "#32aeb1", color: "white", padding: "5px 5px", marginBottom: "10px" }}>Total Amount: Rs {totalamount}</h3>
-                            <p style={{ borderRadius: "12px", fontSize: "18px", backgroundColor: "black", width: "200px", textAlign: "center", color: "white", padding: "5px 0px", }}>Checkout</p>
+                            <p style={{ borderRadius: "12px", fontSize: "18px", backgroundColor: "black", width: "200px", textAlign: "center", color: "white", padding: "5px 0px", cursor :"pointer" }} onClick={handleCartAmt} >Checkout</p>
                         </div>
                     </div>
             }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import './payment.css';
+import "./payment.css"
 // import { clearCart, makePayment } from '../Redux/Cart/action';
 // import { Button } from '@chakra-ui/react';
 
@@ -11,7 +11,8 @@ const Payment = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // let { cart, subtotal, discountTotal } = useSelector((store) => store.cartReducer)
+
+  const cartAmount = useSelector((store) => store.cartReducer.cartAmount)
 
   // if (cart) {
   //   for (let i = 0; i < cart.length; i++) {
@@ -35,11 +36,12 @@ const Payment = () => {
 
   return (
     <div className="payment-page">
+      <h1>{cartAmount}</h1>
       {/* <Button colorScheme="teal" >Payment</Button> */}
       <div className="payment-options">
         <h1>Select Payment Method</h1>
         <div className="wallet-option">
-          <img src="https://consumer-app-images.pharmeasy.in/payment-icons/rupay.png" alt="wallet icon" />
+          <img className='payersImg' src="https://consumer-app-images.pharmeasy.in/payment-icons/rupay.png" alt="wallet icon" />
           <div className="wallet-details">
             <h3>Wallet</h3>
             <p>Get 5% cashback on all purchases</p>
@@ -54,7 +56,7 @@ const Payment = () => {
           />
         </div>
         <div className="credit-card-option">
-          <img src="https://consumer-app-images.pharmeasy.in/payment-icons/visa.png" alt="credit card icon" />
+          <img className='payersImg' src="https://consumer-app-images.pharmeasy.in/payment-icons/visa.png" alt="credit card icon" />
           <div className="credit-card-details">
             <h3>Credit Card</h3>
             <p>Get 10% cashback on all purchases</p>
