@@ -45,6 +45,10 @@ export const Product = () => {
     axios.get(`https://shy-puce-binturong-ring.cyclic.app/electronics?_page=${page}&_limit=13`, { params })
       .then((res) => {
         dispatch(fetchSuccessAction(res.data))
+
+
+
+        
         console.log(res.data)
       })
       .catch((error) => {
