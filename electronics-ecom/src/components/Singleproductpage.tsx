@@ -42,7 +42,7 @@ const Singleproductpage = () => {
 
         let flag = false
         for (let i = 0; i <= dataproductaddedtotal.length - 1; i++) {
-            if (dataproductaddedtotal[i].id === user_id) {
+            if (dataproductaddedtotal[i].id === Number(user_id)) {
                 flag = true
                 alert("product already in cart")
                 break;
@@ -53,6 +53,8 @@ const Singleproductpage = () => {
             alert("product added to cart")
             dispatch(addproductaction({id, image, category, brand, rating, rated_by, description, price, color,quantity:1 }))
         }
+
+    
     }
 
 
@@ -72,17 +74,17 @@ const Singleproductpage = () => {
 
             </div>
             <div className='card_detail'>
-                <h2> {brand.toUpperCase()}  {category.toUpperCase()}</h2>
-                <div>
+                <h2 style={{marginBottom:"4px"}}> {brand.toUpperCase()}  {category.toUpperCase()}</h2>
+                <div style={{marginBottom:"4px"}}>
                     <Starrating rating={rating} review={rated_by} />
                     <span className='review'>{`   (${rated_by} reviews)`} </span>
                 </div>
                 <h5 className='price'>{`MRP:₹${price}.00`}</h5>
-                <p>{description}</p>
-                <p>Available: <b style={{ color: "green" }}>In Stock</b></p>
-                <p>Color: <b>{color}</b></p>
+                <p style={{marginBottom:"20px" }}>{description}</p>
+                <p style={{marginBottom:"3px"}}>Available: <b style={{ color: "green" }}>In Stock</b></p>
+                <p style={{marginBottom:"3px"}}>Color: <b>{color}</b></p>
                 <p className='brand_single_product'>Brand: <b style={{ color: "blue" }}>{brand.toUpperCase()}</b></p>
-                <button onClick={handleAddProduct} className='cart_btn'>Add To Cart</button>
+                <button style={{cursor:"pointer"}}  onClick={handleAddProduct} className='cart_btn'><i style={{marginRight:"10px", fontSize:"25px", color:"black"}} className="fa-solid fa-cart-shopping"></i>Add To Cart</button>
 
             </div>
             <Link to="/products/cart">click to cart</Link>
@@ -136,9 +138,9 @@ margin:auto;
       
 
       .main_img_card img{
-        width:200px;
-        height:240px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        width:280px;
+        height:320px;
+        /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
         padding:25px;
         border-radius:13px;
      
@@ -148,7 +150,7 @@ margin:auto;
     
 
       .card_detail{
-        width:30%;
+        width:50%;
         /* border:3px solid purple; */
       }
 
@@ -162,6 +164,7 @@ margin:auto;
 .brand_single_product{
     border-bottom:3px solid grey;
    padding-bottom:30px;
+   margin-bottom: 20px;;
 }
 
 .cart_btn{
@@ -170,6 +173,7 @@ margin:auto;
     font-weight:600;
     background-color:lightgreen;
     border-radius:14px;
+    
 }
 
 .price {

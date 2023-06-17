@@ -1,7 +1,12 @@
 import React from 'react'
+// import Carousel from "react-multi-carousel"
+// import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import styled from 'styled-components'
+
+
+
 export const Crausel = () => {
     const responsive = {
         superLargeDesktop: {
@@ -44,28 +49,28 @@ export const Crausel = () => {
     ]
 
 
-  return (
-    <DIV className="carousel_div">
-                <div className="inner_carousel_div" style={{ width: "95%", margin: "auto" }} >
-                    <Carousel
-                        responsive={responsive}
-                        infinite={true}
-                        autoPlay={true}
-                        showDots={false}
-                 >
-                      {
-                     data.map((item) => {
-                             return (
-                              <div key={Math.random()}>
-                                <img width="186px" height="180px" src={item} alt="" />
-                          </div>
-                      )
-                   })
-                 }
-          </Carousel>
-     </div>
- </DIV>
-  )
+    return (
+        <DIV className="carousel_div">
+            <div className="inner_carousel_div" style={{ width: "95%", margin: "auto" }} >
+                <Carousel
+                    responsive={responsive}
+                    infinite={true}
+                    autoPlay={true}
+                    showDots={false}
+                >
+                    {
+                        data.map((item) => {
+                            return (
+                                <div key={Math.random()}>
+                                    <img width="186px" height="180px" src={item} alt="" />
+                                </div>
+                            )
+                        })
+                    }
+                </Carousel>
+            </div>
+        </DIV>
+    )
 }
 
 

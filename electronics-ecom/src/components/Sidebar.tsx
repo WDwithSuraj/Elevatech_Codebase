@@ -154,6 +154,10 @@ export const Sidebar = () => {
                 <label>Infinix</label>
                 <br />
                 <br />
+                <input value={"boat"} onChange={handlechangebrand} type="checkbox" checked={brand.includes("boat")} />
+                <label>Boat</label>
+                <br />
+                <br />
                 <input value={"sony"} onChange={handlechangebrand} type="checkbox" checked={brand.includes("sony")} />
                 <label>Sony</label>
                 <br />
@@ -201,6 +205,11 @@ const DIV = styled.div`
   border-right: 1px solid gray;
   text-align: left;
   margin-left: 20px;
+
+  h3{
+   margin-bottom:20px ;
+   padding-right: 40px;
+  }
   
 
   label {
@@ -223,7 +232,10 @@ const DIV = styled.div`
   margin-right:20px;
    padding:20px 10px 20px 40px;
    /* background-color: rgb(109, 241, 241); */
-   background-color:rgb(13, 171, 171);
+   background: #fceabb;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f8b500, #fceabb);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f8b500, #fceabb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
    margin-top:20px;
    accent-color: red;
     
@@ -234,7 +246,10 @@ const DIV = styled.div`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   margin-right:20px;
    padding:20px 10px 20px 40px;
-   background-color:rgb(13, 171, 171);
+   background: #fceabb;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f8b500, #fceabb);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f8b500, #fceabb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
    margin-top:20px;
    accent-color: red;
     
@@ -245,7 +260,10 @@ const DIV = styled.div`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     margin-right:20px;
     padding:20px 10px 20px 40px;
-    background-color:rgb(13, 171, 171);
+    background: #fceabb;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f8b500, #fceabb);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f8b500, #fceabb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     accent-color: red;
   }
 
@@ -253,7 +271,11 @@ const DIV = styled.div`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     margin-right:20px;
     padding:20px 10px 20px 40px;
-    background-color:rgb(13, 171, 171);
+    /* background-color:rgb(13, 171, 171); */
+    background: #fceabb;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f8b500, #fceabb);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f8b500, #fceabb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
      accent-color: red;
 
   }
