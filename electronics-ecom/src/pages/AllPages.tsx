@@ -3,13 +3,17 @@ import { Route, Routes} from 'react-router-dom'
 import { Home } from './Home'
 import { Product } from './Product'
 import Singleproductpage from '../components/Singleproductpage'
+import Cartrpage from './Cartpage'
+
 export const AllPages = () => {
     return(
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/products' element={<Product/>}/>
+        <Route path='/products/cart' element={<Cartrpage/>} />
         {/* //put single product page inside private route  */}
-        <Route path='/products/:id' element={<Singleproductpage />} />
+        <Route path='/products/:user_id' element={<Singleproductpage />} />
+
       </Routes>
     )
 }
