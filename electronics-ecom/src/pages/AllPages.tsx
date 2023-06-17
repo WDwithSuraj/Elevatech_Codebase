@@ -22,7 +22,7 @@ export const AllPages = () => {
         <Route path='/' element={<Home/>}/>
         <Route path='/products' element={<Product/>}/>
 
-        <Route path='/products/cart' element={<Cartrpage/>} />
+        <Route path='/products/cart' element={<Cartpage/>} />
 
         {/* //put single product page inside private route  */}
         <Route path='/products/:user_id' element={<Singleproductpage />} />
