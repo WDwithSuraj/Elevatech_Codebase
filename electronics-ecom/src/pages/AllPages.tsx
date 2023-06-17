@@ -6,6 +6,7 @@ import { Product } from './Product'
 import Singleproductpage from '../components/Singleproductpage'
 
 import { Admin } from './Admin'
+import Payment from './Payment'
 
 export const AllPages = () => {
     return(
@@ -15,9 +16,8 @@ export const AllPages = () => {
 
         {/* //put single product page inside private route  */}
         <Route path='/products/:id' element={<Singleproductpage />} />
-
         <Route path='/admin' element={<Admin/>}/>
-
+        <Route path='/payment' element={<Payment/>}/>
       </Routes>
     )
 }
