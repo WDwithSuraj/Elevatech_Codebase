@@ -19,7 +19,7 @@ export const Sidebar = () => {
     const [category, setCategory] = useState(initialcategory || [])
     const [color, setColor] = useState(initialcolor || [])
     const [order, setorder] = useState("")
-    const [brand,setBrand] = useState(initialbrand || [])
+    const [brand, setBrand] = useState(initialbrand || [])
 
 
 
@@ -39,14 +39,14 @@ export const Sidebar = () => {
         let params = {
             category: category,
             color: color,
-            brand:brand,
+            brand: brand,
             ...obj2
 
         }
         setSearchparams(params)
 
 
-    }, [category, color, order,brand])
+    }, [category, color, order, brand])
     //  console.log(searchparams,"insearch params");
 
     const handlechangecategory = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -212,6 +212,8 @@ const DIV = styled.div`
     font-size: larger;
   }
 
+
+
   input{
     cursor:pointer;
   }
@@ -254,6 +256,20 @@ const DIV = styled.div`
     background-color:rgb(13, 171, 171);
      accent-color: red;
 
+  }
+
+
+
+  /* // if checkbox doesnt align remove below poperties  */
+  input{
+    width:20px;
+    height:20px;
+    
+  }
+
+  label{
+   position:relative;
+   bottom:3px;
   }
 `;
 
