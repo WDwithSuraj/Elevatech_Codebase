@@ -128,12 +128,12 @@ const [userNameFirstLetter, setUserNameFirstLetter]  = useState('')
 
       
 
-        <Link style={{ textDecoration: "none" }} to="/products/cart"> <span style={{fontWeight:"600", position:"absolute",top:"14px",right:"70px"}}>{cartItem.length > 0 ? cartItem.length : null}</span><h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3></Link>
+      
 
           {isAuth? <div className="logOutDiv"><h2 className="logOutText">{userNameFirstLetter.toUpperCase()}</h2><button className="button-37" onClick={logOut} >Log Out</button></div> :
         <Link style={{ textDecoration: "none", color : "black" }} to="/login"><h3>Login<i className="fa-solid fa-user"></i></h3></Link>
           } 
-      
+        <Link style={{ textDecoration: "none" }} to="/products/cart"> <span style={{fontWeight:"600", position:"absolute",top:"14px",right:"70px"}}>{cartItem.length > 0 ? cartItem.length : null}</span><h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3></Link>
 
       </div>
     </DIV>
