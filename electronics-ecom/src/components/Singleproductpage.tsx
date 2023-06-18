@@ -5,12 +5,7 @@ import { RootState } from '../redux/store'
 import styled from 'styled-components'
 import Starrating from './Starrating'
 import { addproductaction } from '../redux/action'
-
-import { Link } from "react-router-dom"
-
-interface ImageType {
-    image: string[]
-}
+import Swal from 'sweetalert2'
 
 interface ItemTpe {
     image: string[];
@@ -55,13 +50,22 @@ const Singleproductpage = () => {
         for (let i = 0; i <= dataproductaddedtotal.length - 1; i++) {
             if (dataproductaddedtotal[i].id === Number(user_id)) {
                 flag = true
-                alert("product already in cart")
+            Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Product already in cart',
+
+})
                 break;
             }
         }
 
         if (flag === false) {
-            alert("product added to cart")
+            Swal.fire(
+          'Good job!',
+        'Product Added to cart',
+        'success'
+            )
             dispatch(addproductaction({ ...oneproduct, quantity: 1 }))
         }
     }

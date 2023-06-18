@@ -46,8 +46,8 @@ export const Sidebar = () => {
         setSearchparams(params)
 
 
-    }, [category, color, order, brand])
-    //  console.log(searchparams,"insearch params");
+    }, [category, color, order, brand, setSearchparams])
+   
 
     const handlechangecategory = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -80,7 +80,7 @@ export const Sidebar = () => {
 
 
     }
-    // console.log(category," settingn category")
+  
 
     const handlechangecolor = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target

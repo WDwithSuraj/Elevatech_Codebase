@@ -1,13 +1,19 @@
 import { ChangeEvent, useState } from "react";
 import { styled } from "styled-components";
-// import "../pages/signup.css";
-// import logo1 from "../logo1.svg";
-
+import {auth} from "../firebase";
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import Swal from 'sweetalert2';
+import {useNavigate} from "react-router-dom"
 const strengthLabels = ["weak", "medium", "strong"];
 
 export const SignUp = () => {
     const [strength, setStrength] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("")
 
+    const navigate = useNavigate()
     const getStrength = (password: string) => {
         console.log(password);
 
@@ -38,22 +44,63 @@ export const SignUp = () => {
         setStrength(strengthLabels[strengthIndicator] ?? "");
     };
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) =>
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setPassword(event.target.value)
         getStrength(event.target.value);
+    }
+
+     const onSignUp = async () => {
+          createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredentials)=> {
+              const res =  fetch(`https://elevatetech-project-default-rtdb.asia-southeast1.firebasedatabase.app/userDataRecords.json`,{
+                  method : "POST",
+                  headers : {
+                      "Content-type" : "application/json"
+                  },
+                  body : JSON.stringify({
+                      firstName : firstName,
+                      lastName : lastName,
+                      email : email,
+                      password : password
+                  })
+              })
+
+              res.then((data)=>{
+                if(data){
+                        Swal.fire(
+            'Good job!',
+          'You have been registered!',
+           'success'
+          )
+          setTimeout(()=>{
+              navigate('/login')
+          },1000)
+                }
+              
+              }) 
+          })
+          .catch((error : any )=> alert(`${error}`))
+  }
+
+  const handleSignUp = (e : React.FormEvent<HTMLFormElement>) =>{
+        e.preventDefault();
+        onSignUp()
+  }
 
     return (
         <WRAPPER className="login-card">
             <img src={"https://cdn.dribbble.com/users/129991/screenshots/4495463/user_sign_up.gif"} alt="imagelogo" />
             <h2>Sign Up</h2>
-            <form className="login-form">
+            <form onSubmit={handleSignUp} className="login-form">
                 <div className="first_last">
                     <div className="firstname">
                         <input
                             autoComplete="off"
                             spellCheck="false"
                             className="control_firstname"
-                            type="email"
+                            type="text"
                             placeholder="FirstName"
+                            onChange={(e)=> setFirstName(e.target.value)}
                         />
                         <div id="spinner" className="spinner"></div>
                     </div>
@@ -62,8 +109,9 @@ export const SignUp = () => {
                             autoComplete="off"
                             spellCheck="false"
                             className="control_lastname"
-                            type="email"
+                            type="text"
                             placeholder="LastName"
+                             onChange={(e)=> setLastName(e.target.value)}
                         />
                         <div id="spinner" className="spinner"></div>
                     </div>
@@ -75,6 +123,7 @@ export const SignUp = () => {
                         className="control"
                         type="email"
                         placeholder="Email"
+                        onChange={(e)=> setEmail(e.target.value)}
                     />
                     <div id="spinner" className="spinner"></div>
                 </div>
@@ -91,7 +140,7 @@ export const SignUp = () => {
                     <div></div>
                 </div>
                 <div className="strength">{strength && <>{strength} password</>}</div>
-                <button className="control" type="button">
+                <button className="control"  type="submit">
                     JOIN NOW
                 </button>
             </form>

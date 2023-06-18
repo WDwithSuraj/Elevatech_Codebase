@@ -1,5 +1,4 @@
 import { RiDeleteBin5Fill } from 'react-icons/ri';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { decreasequantityaction, incresequantityaction } from '../redux/action';
 

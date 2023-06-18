@@ -15,6 +15,7 @@ import Cartpage from './Cartpage'
 import Payment from './Payment'
 import Login from './Login'
 import { SignUp } from './SignUp'
+import { PrivateRoute } from '../components/PrivateRoute'
 
 
 
@@ -25,13 +26,13 @@ export const AllPages = () => {
         <Route path='/' element={<Home/>}/>
         <Route path='/products' element={<Product/>}/>
 
-        <Route path='/products/cart' element={<Cartpage/>} />
+        <Route path='/products/cart' element={<PrivateRoute><Cartpage/></PrivateRoute>} />
 
         {/* //put single product page inside private route  */}
-        <Route path='/products/:user_id' element={<Singleproductpage />} />
+        <Route path='/products/:user_id' element={<PrivateRoute><Singleproductpage /></PrivateRoute>} />
         <Route path='/admin' element={<Admin/>}/>
 
-        <Route path='/payment' element={<Payment/>}/>
+        <Route path='/payment' element={<PrivateRoute><Payment/></PrivateRoute>}/>
         <Route path="*" element={<h2>Page not found 404</h2>}/>
         <Route path='/login' element={<Login />} />
         <Route path='/sign-up' element={<SignUp />} />
