@@ -1,12 +1,11 @@
 
-// import { Authcontext } from "../context/Authcontext"
-// import { useContext } from "react"
+
 import { useNavigate } from "react-router-dom"
 
 import { FaUser } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { useState } from "react";
-import {Link} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {auth} from "../firebase"
 import { styled } from "styled-components";
@@ -15,12 +14,14 @@ import { styled } from "styled-components";
 const Login = () => {
      const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation()
+
     const onSingIn = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredenditals) => {
              setTimeout(()=>{
-           navigate('/')
+           navigate(location.state, {replace : true})
         },1000)
         }).catch((error)=> {
             alert(`Invalid email or password`)

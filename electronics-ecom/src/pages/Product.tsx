@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { Sidebar } from '../components/Sidebar'
 import { useSelector, useDispatch } from 'react-redux'
@@ -27,9 +28,9 @@ export const Product = () => {
   const dispatch = useDispatch()
   const [page, setPage] = useState<number>(1)
 
-  // console.log(productData, "inproduct")
+ 
 
-  // let obj = {
+ 
   let params = {
     category: searchparams.getAll("category"),
     color: searchparams.getAll("color"),
@@ -37,7 +38,7 @@ export const Product = () => {
     _sort: searchparams.get("order") && "price",
     _order: searchparams.get("order")
   }
-  // }
+  
 
 
   const getProductData = (page: number, params: SearchParamsType) => {
@@ -111,7 +112,7 @@ const WRAPPER = styled.div`
   padding:12px 22px;
   margin-right:8px;
   font-weight:600;
-  /* background-color:teal; */
+
   background-color: #e74326;
   color:white;
   border-radius:12px;

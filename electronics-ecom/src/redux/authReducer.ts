@@ -1,7 +1,7 @@
 import { USER_LOGIN, USER_LOGOUT } from "./actionTypes";
 
 interface AuthType {
-    isAuth : false
+    isAuth : boolean
 }
 
 const initialState : AuthType = {
@@ -10,10 +10,9 @@ const initialState : AuthType = {
 
 interface ActionOfType {
     type: string,
-    payload: any[] 
 }
 
-export const reducer = (state = initialState, {type, payload} : ActionOfType) => {
+export const reducer = (state = initialState, {type} : ActionOfType) => {
     switch(type){
 
         case USER_LOGIN : {

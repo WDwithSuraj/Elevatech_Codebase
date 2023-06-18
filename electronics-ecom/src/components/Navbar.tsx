@@ -1,9 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import React,{useState} from 'react'
 import logo from "../Images/elevateTechLogo.png"
 import { styled } from 'styled-components'
 import { useNavigate, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-
+import {auth} from "../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import { userLoggedIn, userLoggedOut } from "../redux/action";
+import { RootState } from "../redux/store";
 
 interface ItemTpe {
   image: string;
@@ -15,12 +21,49 @@ interface ItemTpe {
 }
 
 export const Navbar = () => {
-
-
-
-
   const [data, setData] = useState<ItemTpe[]>([])
   const [query, setQuery] = useState("")
+const [userNameFirstLetter, setUserNameFirstLetter]  = useState('')
+  const dispatch = useDispatch()
+  const isAuth = useSelector((store : RootState )=> store.authReducer.isAuth)
+
+  useEffect(()=> {
+        const listen = onAuthStateChanged(auth, (user )=> {
+            if(user && user.email){
+                setUserNameFirstLetter(user.email[0])
+                dispatch(userLoggedIn())
+            }
+        })
+        return () => {
+            listen()
+        }
+    },[])
+
+     const logOut = () => {
+         Swal.fire({
+             title: 'Are you sure?',
+             text: "You want to log out!",
+             icon: 'warning',
+            showCancelButton: true,
+             confirmButtonColor: '#3085d6',
+             cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, log out!'
+            }).then((result) => {
+        if (result.isConfirmed) {
+            signOut(auth).then(()=> {
+            dispatch(userLoggedOut())
+            Swal.fire(
+                'Logged Out!',
+                 'You have been logged out!',
+                     'success'
+                    )
+        })
+  }
+  
+    })
+     
+    } 
+
 
   useEffect(() => {
     fetch(`https://shy-puce-binturong-ring.cyclic.app/electronics?q=${query}`)
@@ -30,7 +73,7 @@ export const Navbar = () => {
         setData(res)
       })
 
-
+      console.log(isAuth)
   }, [query])
 
   console.log(data, "here datas")
@@ -76,12 +119,12 @@ export const Navbar = () => {
 
 
         </div>
-        <Link style={{ textDecoration: "none" }} to="/products"><h3>Products</h3></Link>
+        <Link style={{ textDecoration: "none", color : "black" }} to="/products"><h3>Products</h3></Link>
         <h3>About us</h3>
-
-        <Link style={{ textDecoration: "none" }} to="/login"><h3>Login<i className="fa-solid fa-user"></i></h3></Link>
-
-        <Link style={{ textDecoration: "none" }} to="/products/cart"><h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3></Link>
+          {isAuth? <div className="logOutDiv"><h2 className="logOutText">{userNameFirstLetter.toUpperCase()}</h2><button className="button-37" onClick={logOut} >Log Out</button></div> :
+        <Link style={{ textDecoration: "none", color : "black" }} to="/login"><h3>Login<i className="fa-solid fa-user"></i></h3></Link>
+          } 
+        <Link style={{ textDecoration: "none", color : "black" }} to="/products/cart"><h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3></Link>
       </div>
     </DIV>
   )
@@ -155,11 +198,60 @@ const DIV = styled.div`
     };
     .fa-user {
       margin: 5px;
-
-
-
       
     }
+    .logOutDiv {
+      display: flex;
 
-    
+      
+
+    };
+    .logOutText{
+      font-size: 2rem;
+      margin-right:5px ;
+      background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); 
+      padding: 2px 10px 2px 10px;
+      margin-left: 5px;
+      border-radius: 50%;
+    }
+    .logOutBtn {
+      padding : 0 15px 0 15px;
+      margin : 0;
+      font-weight: 800;
+    };
+
+  .button-37 {
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-37:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-37 {
+    padding: 10px 30px;
+  }
+}
+
 `
+
