@@ -142,3 +142,34 @@ const WRAPPER = styled.div`
 
 
 
+  // * {
+  //           data.length >0  ? <div style={{position:"relative",top:"60px",right:"340px"}}>
+  //             {
+  //               data.map((item) => {
+  //                 return <p style={{border:"3px solid black", padding:"4px",margin:"6px",width:"270px"}} key={Math.random()}>{item.title.substring(1,40)}</p>
+  //               })
+  //             }
+  //           </div>
+  //             : null
+  //         } 
+
+
+          // const [data, setData] = useState<ItemTpe[]>([])
+          // const [query, setQuery] = useState("")
+        
+          // useEffect(() => {
+          //   fetch(`https://shy-puce-binturong-ring.cyclic.app/electronics?q=${query}`)
+          //     .then((res) => res.json())
+          //     .then((res) => {
+          //       // console.log(res)
+          //       setData(res)
+          //     })
+        
+        
+          // }, [query])
+        
+          // console.log(data,"here datas")
+        
+          // const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
+          //   setQuery(e.target.value)
+          // }

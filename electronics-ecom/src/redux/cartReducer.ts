@@ -1,14 +1,14 @@
-import { ADD_PRODUCT, CART_TOTAL, DECREASE_QUANTITY, DELETE_ITEM, INCREASE_QUANTITY } from "./actionTypes"
+import { ADD_PRODUCT, CART_TOTAL, CLEAR_CART, DECREASE_QUANTITY, DELETE_ITEM, INCREASE_QUANTITY } from "./actionTypes"
 
 
 interface InitialStateType {
     cartproduct: any[],
-    cartAmount : number
+    cartAmount: number
 }
 
 const initState: InitialStateType = {
     cartproduct: [],
-    cartAmount : 0
+    cartAmount: 0
 }
 
 interface ActionOfType {
@@ -77,12 +77,22 @@ export const reducer = (state = initState, { type, payload, id, quantity }: Acti
             }
         }
 
-        case CART_TOTAL : {
+        case CART_TOTAL: {
             return {
                 ...state,
-                cartAmount : payload
+                cartAmount: payload
             }
         }
+
+        case CLEAR_CART: {
+
+            return {
+                ...state,
+                cartproduct: [],
+                cartAmount: 0
+            }
+        }
+
         default: {
             return state
         }

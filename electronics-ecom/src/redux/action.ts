@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, CART_TOTAL, DECREASE_QUANTITY, DELETE_ITEM, FETCH_FAILURE, FETCH_REQUEST, FETCH_SUCCESS, INCREASE_QUANTITY } from "./actionTypes"
+import { ADD_PRODUCT, CART_TOTAL, CLEAR_CART, DECREASE_QUANTITY, DELETE_ITEM, FETCH_FAILURE, FETCH_REQUEST, FETCH_SUCCESS, INCREASE_QUANTITY } from "./actionTypes"
 
 const fetchRequestAction = () => {
     return { type: FETCH_REQUEST }
@@ -34,4 +34,11 @@ const deleteaction =(id:number)=>{
 const getCartTotal = (payload : number) => {
     return {type : CART_TOTAL, payload }
 }
-export { fetchRequestAction, fetchSuccessAction, fetcFailureAction, addproductaction, incresequantityaction, decreasequantityaction ,deleteaction, getCartTotal}
+
+
+
+const clearcartaction=()=>{
+     return {type:CLEAR_CART}
+}
+
+export { fetchRequestAction, fetchSuccessAction, fetcFailureAction, addproductaction, incresequantityaction, decreasequantityaction ,deleteaction, getCartTotal,clearcartaction}

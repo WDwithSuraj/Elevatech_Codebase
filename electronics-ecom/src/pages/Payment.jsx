@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import "./payment.css"
+import { clearcartaction } from '../redux/action';
 // import { clearCart, makePayment } from '../Redux/Cart/action';
 // import { Button } from '@chakra-ui/react';
 
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState('wallet');
-  const [deliveryAmt, setDeliveyAmt] = useState(0)
+  const [deliveryAmt, setDeliveyAmt] = useState(40)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,9 +35,16 @@ const Payment = () => {
   //   alert("Order successfull")
   // };
 
+    const handleplaceorder=()=>{
+          alert("Order Placed Successfully!!")
+          dispatch(clearcartaction())
+          navigate("/")
+    }
+
+
   return (
     <div className="payment-page">
-      <h1>{cartAmount}</h1>
+      {/* <h1>{cartAmount}</h1> */}
       {/* <Button colorScheme="teal" >Payment</Button> */}
       <div className="payment-options">
         <h1>Select Payment Method</h1>
@@ -85,27 +93,28 @@ const Payment = () => {
             onChange={(e) => setPaymentMethod(e.target.value)}
           />
         </div>
-        <button className="pay-now-btn" >
-          Checkout
+        <button onClick={handleplaceorder} className="pay-now-btn" >
+          Place Order
         </button>
       </div>
       <div className="price-details">
         <h2>Price Details</h2>
         <div className="cart-value">
           <p>Cart Value:</p>
-          <p>Rs. { }</p>
+          <p>Rs. { cartAmount}</p>
         </div>
         <div className="delivery-charge">
           <p>Delivery Charge:</p>
-          <p>Rs. {deliveryAmt} </p>
+          <p>Rs.{cartAmount !==0 ? deliveryAmt : 0}</p>
         </div>
         <hr />
         <div className="total-price" style={{ fontWeight: "bold" }}>
           <p>Total Price:</p>
-          <p>Rs. {(deliveryAmt)}</p>
+          <p style={{fontSize:"22px"}}>Rs. {(cartAmount +  deliveryAmt)}</p>
         </div>
       </div>
     </div>
+
   );
 };
 
