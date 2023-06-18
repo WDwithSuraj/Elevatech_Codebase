@@ -43,7 +43,7 @@ const Cartcard = ({ image, id, category, brand, price, handledelete, quantity }:
                     {quantity}
                     <button onClick={handledecrease} disabled={quantity === 1} id={"id"} style={{ marginLeft: "8px", padding: "4px 10px" }}>-</button>
                 </div>
-                <div style={{ marginTop: "0px" }}>
+                <div style={{ position:"relative", top:"14px"}}>
                     <p style={{ marginLeft: "20%" }}>₹ {price * quantity}</p>
 
                 </div>

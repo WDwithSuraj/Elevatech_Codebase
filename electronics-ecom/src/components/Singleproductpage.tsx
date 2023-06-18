@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Starrating from './Starrating'
 import { addproductaction } from '../redux/action'
 
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 const Singleproductpage = () => {
@@ -30,7 +30,7 @@ const Singleproductpage = () => {
     console.log(dataproductaddedtotal);
 
 
-    const [{id, image, category, brand, rating, rated_by, description, price, color }] = particularProduct
+    const [{ id, image, category, brand, rating, rated_by, description, price, color }] = particularProduct
     const [cardimage, setCardImage] = useState(image[0])
 
     // console.log(image,"herreid ")
@@ -51,10 +51,10 @@ const Singleproductpage = () => {
 
         if (flag === false) {
             alert("product added to cart")
-            dispatch(addproductaction({id, image, category, brand, rating, rated_by, description, price, color,quantity:1 }))
+            dispatch(addproductaction({ id, image, category, brand, rating, rated_by, description, price, color, quantity: 1 }))
         }
 
-    
+
     }
 
 
@@ -74,20 +74,19 @@ const Singleproductpage = () => {
 
             </div>
             <div className='card_detail'>
-                <h2 style={{marginBottom:"4px"}}> {brand.toUpperCase()}  {category.toUpperCase()}</h2>
-                <div style={{marginBottom:"4px"}}>
+                <h2 style={{ marginBottom: "4px" }}> {brand.toUpperCase()}  {category.toUpperCase()}</h2>
+                <div style={{ marginBottom: "4px" }}>
                     <Starrating rating={rating} review={rated_by} />
                     <span className='review'>{`   (${rated_by} reviews)`} </span>
                 </div>
                 <h5 className='price'>{`MRP:₹${price}.00`}</h5>
-                <p style={{marginBottom:"20px" }}>{description}</p>
-                <p style={{marginBottom:"3px"}}>Available: <b style={{ color: "green" }}>In Stock</b></p>
-                <p style={{marginBottom:"3px"}}>Color: <b>{color}</b></p>
+                <p style={{ marginBottom: "20px" }}>{description}</p>
+                <p style={{ marginBottom: "3px" }}>Available: <b style={{ color: "green" }}>In Stock</b></p>
+                <p style={{ marginBottom: "3px" }}>Color: <b>{color}</b></p>
                 <p className='brand_single_product'>Brand: <b style={{ color: "blue" }}>{brand.toUpperCase()}</b></p>
-                <button style={{cursor:"pointer"}}  onClick={handleAddProduct} className='cart_btn'><i style={{marginRight:"10px", fontSize:"25px", color:"black"}} className="fa-solid fa-cart-shopping"></i>Add To Cart</button>
+                <button style={{ cursor: "pointer" }} onClick={handleAddProduct} className='cart_btn'><i style={{ marginRight: "10px", fontSize: "25px", color: "black" }} className="fa-solid fa-cart-shopping"></i>Add To Cart</button>
 
             </div>
-            <Link to="/products/cart">click to cart</Link>
         </WRAPPER>
     )
 }
@@ -97,6 +96,8 @@ export default Singleproductpage
 const WRAPPER = styled.div`
 
 /* border:3px solid green; */
+position:relative;
+top:80px;
 width:80%;
 display:flex;
 justify-content:center;
@@ -152,6 +153,7 @@ margin:auto;
       .card_detail{
         width:50%;
         /* border:3px solid purple; */
+        padding-top: 80px;
       }
 
 
