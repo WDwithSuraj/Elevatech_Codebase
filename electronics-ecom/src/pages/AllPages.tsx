@@ -14,6 +14,8 @@ import Cartpage from './Cartpage'
 
 import Payment from './Payment'
 import Login from './Login'
+import { SignUp } from './SignUp'
+
 
 
 
@@ -32,6 +34,7 @@ export const AllPages = () => {
         <Route path='/payment' element={<Payment/>}/>
         <Route path="*" element={<h2>Page not found 404</h2>}/>
         <Route path='/login' element={<Login />} />
+        <Route path='/sign-up' element={<SignUp />} />
 
 
       </Routes>
