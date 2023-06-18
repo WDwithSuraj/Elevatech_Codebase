@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { RootState } from '../redux/store'
@@ -8,38 +8,49 @@ import { addproductaction } from '../redux/action'
 
 import { Link } from "react-router-dom"
 
+interface ImageType {
+    image: string[]
+}
+
+interface ItemTpe {
+    image: string[];
+    id: number;
+    title?: string;
+    price: number;
+    rating: number;
+    rated_by: number;
+    category: string,
+    brand: string,
+    description: string,
+    color: string,
+}
+
 
 const Singleproductpage = () => {
 
     const { user_id } = useParams()
-    const ProductData = useSelector((store: RootState) => store.productReducer.product)
     const dataproductaddedtotal = useSelector((store: RootState) => store.cartReducer.cartproduct)
     // console.log(dataproductaddedtotal, "here")
+    const [cardimage, setCardImage] = useState("")
+    const [oneproduct, setoneproduct] = useState<ItemTpe | null>(null)
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        fetch(`https://shy-puce-binturong-ring.cyclic.app/electronics/${user_id}`)
+            .then((res) => {
+                return res.json()
+            })
+            .then((data) => {
+                console.log(data)
+                setCardImage(data.image[0])
+                const { id, image, category, brand, rating, rated_by, description, price, color } = data
+                setoneproduct({ id, image, category, brand, rating, rated_by, description, price, color })
 
-
-    let particularProduct = ProductData.filter((ele, index) => {
-        if (ele.id === Number(user_id)) {
-            return true
-        } else {
-            return false
-        }
-    })
-
-    console.log(dataproductaddedtotal);
-
-
-    const [{ id, image, category, brand, rating, rated_by, description, price, color }] = particularProduct
-    const [cardimage, setCardImage] = useState(image[0])
-
-    // console.log(image,"herreid ")
-
+            })
+    }, [user_id])
 
 
     const handleAddProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
-        // const quantity=1
-
         let flag = false
         for (let i = 0; i <= dataproductaddedtotal.length - 1; i++) {
             if (dataproductaddedtotal[i].id === Number(user_id)) {
@@ -51,43 +62,51 @@ const Singleproductpage = () => {
 
         if (flag === false) {
             alert("product added to cart")
-            dispatch(addproductaction({ id, image, category, brand, rating, rated_by, description, price, color, quantity: 1 }))
+            dispatch(addproductaction({ ...oneproduct, quantity: 1 }))
         }
-
-
     }
 
 
 
     return (
-        <WRAPPER>
-            <div className='card_img_pics'>
-                <div className='side_img_cards'>
-                    <img onClick={() => setCardImage(image[0])} className='side_card' src={image[0]} alt="" />
-                    <img onClick={() => setCardImage(image[1])} className='side_card' src={image[1]} alt="" />
-                    <img onClick={() => setCardImage(image[2])} className='side_card' src={image[2]} alt="" />
-                    <img onClick={() => setCardImage(image[3])} className='side_card' src={image[3]} alt="" />
-                </div>
-                <div className='main_img_card'>
-                    <img src={cardimage} alt="" />
-                </div>
 
-            </div>
-            <div className='card_detail'>
-                <h2 style={{ marginBottom: "4px" }}> {brand.toUpperCase()}  {category.toUpperCase()}</h2>
-                <div style={{ marginBottom: "4px" }}>
-                    <Starrating rating={rating} review={rated_by} />
-                    <span className='review'>{`   (${rated_by} reviews)`} </span>
-                </div>
-                <h5 className='price'>{`MRP:₹${price}.00`}</h5>
-                <p style={{ marginBottom: "20px" }}>{description}</p>
-                <p style={{ marginBottom: "3px" }}>Available: <b style={{ color: "green" }}>In Stock</b></p>
-                <p style={{ marginBottom: "3px" }}>Color: <b>{color}</b></p>
-                <p className='brand_single_product'>Brand: <b style={{ color: "blue" }}>{brand.toUpperCase()}</b></p>
-                <button style={{ cursor: "pointer" }} onClick={handleAddProduct} className='cart_btn'><i style={{ marginRight: "10px", fontSize: "25px", color: "black" }} className="fa-solid fa-cart-shopping"></i>Add To Cart</button>
 
-            </div>
-        </WRAPPER>
+        oneproduct === null ? <div style={{ margin: "auto", width: "fit-content" }}>
+            <img src="https://i0.wp.com/static.onemansblog.com/wp-content/uploads/2016/05/clock-loading.gif" alt="loading_img" />
+
+        </div>
+
+            :
+            <WRAPPER>
+                <div className='card_img_pics'>
+                    <div className='side_img_cards'>
+                        <img onClick={() => setCardImage(oneproduct.image[0])} className='side_card' src={oneproduct.image[0]} alt="" />
+                        <img onClick={() => setCardImage(oneproduct.image[1])} className='side_card' src={oneproduct.image[1]} alt="" />
+                        <img onClick={() => setCardImage(oneproduct.image[2])} className='side_card' src={oneproduct.image[2]} alt="" />
+                        <img onClick={() => setCardImage(oneproduct.image[3])} className='side_card' src={oneproduct.image[3]} alt="" />
+                    </div>
+                    <div className='main_img_card'>
+                        <img src={cardimage} alt="" />
+                    </div>
+
+                </div>
+                <div className='card_detail'>
+                    <h2 style={{ marginBottom: "4px" }}> {oneproduct.brand.toUpperCase()}  {oneproduct.category.toUpperCase()}</h2>
+                    <div style={{ marginBottom: "4px" }}>
+                        <Starrating rating={oneproduct.rating} review={oneproduct.rated_by} />
+                        <span className='review'>{`   (${oneproduct.rated_by} reviews)`} </span>
+                    </div>
+                    <h5 className='price'>{`MRP:₹${oneproduct.price}.00`}</h5>
+                    <p style={{ marginBottom: "20px" }}>{oneproduct.description}</p>
+                    <p style={{ marginBottom: "3px" }}>Available: <b style={{ color: "green" }}>In Stock</b></p>
+                    <p style={{ marginBottom: "3px" }}>Color: <b>{oneproduct.color}</b></p>
+                    <p className='brand_single_product'>Brand: <b style={{ color: "blue" }}>{oneproduct.brand.toUpperCase()}</b></p>
+                    <button style={{ cursor: "pointer" }} onClick={handleAddProduct} className='cart_btn'><i style={{ marginRight: "10px", fontSize: "25px", color: "black" }} className="fa-solid fa-cart-shopping"></i>Add To Cart</button>
+
+                </div>
+            </WRAPPER>
+
+
     )
 }
 
