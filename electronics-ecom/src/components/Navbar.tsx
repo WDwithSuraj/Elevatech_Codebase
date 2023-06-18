@@ -78,9 +78,9 @@ export const Navbar = () => {
         </div>
         <Link style={{ textDecoration: "none" }} to="/products"><h3>Products</h3></Link>
         <h3>About us</h3>
-        <Link style={{ textDecoration: "none" }} to="/login">
-          <h3>Login<i className="fa-solid fa-user"></i></h3>
-        </Link>
+
+        <Link style={{ textDecoration: "none" }} to="/login"><h3>Login<i className="fa-solid fa-user"></i></h3></Link>
+
         <Link style={{ textDecoration: "none" }} to="/products/cart"><h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3></Link>
       </div>
     </DIV>
