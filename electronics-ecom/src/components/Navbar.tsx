@@ -4,12 +4,15 @@ import logo from "../Images/elevateTechLogo.png"
 import { styled } from 'styled-components'
 import { useNavigate, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+
+
 import {auth} from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoggedIn, userLoggedOut } from "../redux/action";
 import { RootState } from "../redux/store";
+
 
 interface ItemTpe {
   image: string;
@@ -23,6 +26,9 @@ interface ItemTpe {
 export const Navbar = () => {
   const [data, setData] = useState<ItemTpe[]>([])
   const [query, setQuery] = useState("")
+
+  const cartItem = useSelector((store: RootState) => store.cartReducer.cartproduct)
+
 const [userNameFirstLetter, setUserNameFirstLetter]  = useState('')
   const dispatch = useDispatch()
   const isAuth = useSelector((store : RootState )=> store.authReducer.isAuth)
@@ -65,6 +71,7 @@ const [userNameFirstLetter, setUserNameFirstLetter]  = useState('')
     } 
 
 
+
   useEffect(() => {
     fetch(`https://shy-puce-binturong-ring.cyclic.app/electronics?q=${query}`)
       .then((res) => res.json())
@@ -92,7 +99,7 @@ const [userNameFirstLetter, setUserNameFirstLetter]  = useState('')
       <div className="navLIst">
         <div style={{ position: "relative" }} className='navSearchBox'>
           <label>
-            <input onChange={handlechange} type="search" placeholder='Try headphones!' />
+            <input onChange={handlechange} type="search" placeholder='Type to Search' />
             <i className="fa-solid fa-magnifying-glass"></i>
           </label>
 
@@ -100,10 +107,10 @@ const [userNameFirstLetter, setUserNameFirstLetter]  = useState('')
 
 
           {
-            query !== "" ? <div style={{ position: "absolute", top: "55px", width: "320px", background: "white", height: "400px",zIndex:"100", overflowY: "scroll",borderRadius:"15px" ,padding:"3px 9px 3px 14px", boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}}>
+            query !== "" ? <div className="scroll_container" style={{ position: "absolute", top: "65px", width: "320px", background: "white", height: "400px", zIndex: "100", overflowY: "scroll", borderRadius: "20px", padding: "3px 9px 3px 14px", boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}>
               {
-                data.map((item :ItemTpe) => {
-                  return <Link style={{textDecoration:"none"}} to={`/products/${item.id}`}><div style={{ display: "flex", justifyContent: "center", alignItems: "center",color:"black" }}>
+                data.map((item: ItemTpe) => {
+                  return <Link style={{ textDecoration: "none" }} to={`/products/${item.id}`}><div style={{ display: "flex", justifyContent: "center", alignItems: "center", color: "black" }}>
                     <img width="55px" height="50px" src={item.image[0]} alt="" />
                     <p style={{ fontWeight: "600", padding: "8px 4px 8px 4px", margin: "6px", borderRadius: "8px" }} key={Math.random()}>{`${item.title.substring(0, 40)}....`}</p>
                   </div></Link>
@@ -114,32 +121,25 @@ const [userNameFirstLetter, setUserNameFirstLetter]  = useState('')
               : null
           }
 
-
-
-
-
         </div>
         <Link style={{ textDecoration: "none", color : "black" }} to="/products"><h3>Products</h3></Link>
         <h3>About us</h3>
+
+
+        <Link style={{ textDecoration: "none" }} to="/login"><h3>Login<i className="fa-solid fa-user"></i></h3></Link>
+
+        <Link style={{ textDecoration: "none" }} to="/products/cart"> <span style={{fontWeight:"600", position:"absolute",top:"14px",right:"70px"}}>{cartItem.length > 0 ? cartItem.length : null}</span><h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3></Link>
+
           {isAuth? <div className="logOutDiv"><h2 className="logOutText">{userNameFirstLetter.toUpperCase()}</h2><button className="button-37" onClick={logOut} >Log Out</button></div> :
         <Link style={{ textDecoration: "none", color : "black" }} to="/login"><h3>Login<i className="fa-solid fa-user"></i></h3></Link>
           } 
         <Link style={{ textDecoration: "none", color : "black" }} to="/products/cart"><h3>Cart <i className="fa-solid fa-cart-shopping"></i></h3></Link>
+
       </div>
     </DIV>
   )
 }
 
-//  {
-//           data.length >0  ? <div style={{position:"relative",top:"60px",right:"340px"}}>
-//             {
-//               data.map((item) => {
-//                 return <p style={{border:"3px solid black", padding:"4px",margin:"6px",width:"270px"}} key={Math.random()}>{item.title.substring(1,40)}</p>
-//               })
-//             }
-//           </div>
-//             : null
-//         } 
 
 
 const DIV = styled.div`
@@ -178,26 +178,34 @@ const DIV = styled.div`
        cursor: pointer;
     };
     .navSearchBox {
-      border : 2px solid black;
+      border : 3px solid black;
+      border-radius: 28px;
       display: flex;
       align-items: center;
       padding-bottom: 4px;
       padding: 5px;
     };
+
     .navSearchBox input {
       width: 300px;
       height: 40px;
-      font-size: 20px;
+      font-size: 23px;
+      font-weight: 600;
      outline: none;
      border: none;
+     border-radius: 10px;
+     
     };
     .navSearchBox .fa-magnifying-glass {
       font-size: 22px;
       margin: 5px;
-      padding: 5px;
+      padding: 10px 14px 10px 14px ;
+      background-color: orange;
+      border-radius: 18px;
     };
     .fa-user {
       margin: 5px;
+
       
     }
     .logOutDiv {
@@ -213,6 +221,7 @@ const DIV = styled.div`
       padding: 2px 10px 2px 10px;
       margin-left: 5px;
       border-radius: 50%;
+
     }
     .logOutBtn {
       padding : 0 15px 0 15px;
@@ -254,4 +263,5 @@ const DIV = styled.div`
 }
 
 `
+
 
