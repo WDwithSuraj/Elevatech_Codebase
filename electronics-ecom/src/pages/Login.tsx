@@ -1,27 +1,27 @@
 
-// import { Authcontext } from "../context/Authcontext"
-// import { useContext } from "react"
+
 import { useNavigate } from "react-router-dom"
-import loginimg from "../Images/loginimg.png"
+
 import { FaUser } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { useState } from "react";
-import {Link} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {auth} from "../firebase"
 import { styled } from "styled-components";
-import avtar from "../Images/avatar.png"
-import bg from "../Images/bg.svg"
+
 
 const Login = () => {
      const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation()
+
     const onSingIn = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredenditals) => {
              setTimeout(()=>{
-           navigate('/')
+           navigate(location.state, {replace : true})
         },1000)
         }).catch((error)=> {
             alert(`Invalid email or password`)
@@ -30,6 +30,10 @@ const Login = () => {
        
     }
     
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onSingIn()
+  }
     
 
     return (
@@ -40,16 +44,18 @@ const Login = () => {
       <h2>Login</h2>
       
 
-      <form className="login-form">
+      <form onSubmit={handleLogin} className="login-form">
         <div className="textbox">
-          <input type="email" placeholder="Username" />
+            <FaUser/>
+          <input type="email" placeholder="Username" onChange={(e)=> setEmail(e.target.value)} />
         
         </div>
         <div className="textbox">
-          <input type="password" placeholder="Password" />
+            <RiLockPasswordFill/>
+          <input type="password" placeholder="Password" onChange={(e)=> setPassword(e.target.value)}/>
          
         </div>
-        <button type="submit">LOGIN</button>
+        <button   type="submit">LOGIN</button>
         <Link to="/sign-up">New User? Register here!</Link>
       </form>
     </DIV>
@@ -68,9 +74,6 @@ const DIV = styled.div`
   width: 30%;
   padding: 70px 30px 44px;
   border-radius: 22px;
- /* background: #0F2027;  /* fallback for old browsers 
-background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 
-background: linear-gradient(to right, #2C5364, #203A43, #0F2027); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   text-align: center;
@@ -171,7 +174,7 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border: 0;
   font-weight: 600;
   letter-spacing: 2px;
-  width : 50%;
+  width : 30%;
   
 }
 
@@ -189,5 +192,3 @@ export default Login
 
 
 
-
-// backgroundImage: "linear-gradient(to bottom,rgba(36,174,177,0) 50%,rgba(36,174,177,.7) 130%),linear-gradient(to bottom,#fff,#fff)"

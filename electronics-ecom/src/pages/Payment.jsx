@@ -3,43 +3,27 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import "./payment.css"
 import { clearcartaction } from '../redux/action';
-// import { clearCart, makePayment } from '../Redux/Cart/action';
-// import { Button } from '@chakra-ui/react';
+import Swal from 'sweetalert2';
 
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState('wallet');
-  const [deliveryAmt, setDeliveyAmt] = useState(40)
+  const [deliveryAmt] = useState(40)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const cartAmount = useSelector((store) => store.cartReducer.cartAmount)
 
-  // if (cart) {
-  //   for (let i = 0; i < cart.length; i++) {
-  //     subtotal += cart[i].o_price;
-  //     discountTotal += cart[i].price;
-  //   }
-  //   if (subtotal < 3999) {
-  //     setDeliveyAmt(99)
-  //   }
-  // }
-  // if (cart.length === 0) {
-  //   subtotal = 0;
-  //   discountTotal = 0;
-  // }
-  // const handlePayment = () => {
-  //   dispatch(makePayment(paymentMethod));
-  //   clearCart(dispatch)
-  //   navigate('/');
-  //   alert("Order successfull")
-  // };
 
-    const handleplaceorder=()=>{
-          alert("Order Placed Successfully!!")
-          dispatch(clearcartaction())
-          navigate("/")
-    }
+  const handleplaceorder = () => {
+    Swal.fire(
+      'Good job!',
+      'Product Added to cart',
+      'success'
+    )
+    dispatch(clearcartaction())
+    navigate("/")
+  }
 
 
   return (
@@ -101,16 +85,16 @@ const Payment = () => {
         <h2>Price Details</h2>
         <div className="cart-value">
           <p>Cart Value:</p>
-          <p>Rs. { cartAmount}</p>
+          <p>Rs. {cartAmount}</p>
         </div>
         <div className="delivery-charge">
           <p>Delivery Charge:</p>
-          <p>Rs.{cartAmount !==0 ? deliveryAmt : 0}</p>
+          <p>Rs.{cartAmount !== 0 ? deliveryAmt : 0}</p>
         </div>
         <hr />
         <div className="total-price" style={{ fontWeight: "bold" }}>
           <p>Total Price:</p>
-          <p style={{fontSize:"22px"}}>Rs. {(cartAmount +  deliveryAmt)}</p>
+          <p style={{ fontSize: "22px" }}>Rs. {(cartAmount + deliveryAmt)}</p>
         </div>
       </div>
     </div>
