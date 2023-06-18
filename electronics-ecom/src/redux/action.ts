@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, CART_TOTAL, CLEAR_CART, DECREASE_QUANTITY, DELETE_ITEM, FETCH_FAILURE, FETCH_REQUEST, FETCH_SUCCESS, INCREASE_QUANTITY } from "./actionTypes"
+import { ADD_PRODUCT, CART_TOTAL, CLEAR_CART, DECREASE_QUANTITY, DELETE_ITEM, FETCH_FAILURE, FETCH_REQUEST, FETCH_SUCCESS, INCREASE_QUANTITY, USER_LOGIN, USER_LOGOUT } from "./actionTypes"
 
 const fetchRequestAction = () => {
     return { type: FETCH_REQUEST }
@@ -39,6 +39,14 @@ const getCartTotal = (payload : number) => {
 
 const clearcartaction=()=>{
      return {type:CLEAR_CART}
+}
+
+export const userLoggedIn = () => {
+    return {type : USER_LOGIN}
+}
+
+export const userLoggedOut = () => {
+    return {type: USER_LOGOUT}
 }
 
 export { fetchRequestAction, fetchSuccessAction, fetcFailureAction, addproductaction, incresequantityaction, decreasequantityaction ,deleteaction, getCartTotal,clearcartaction}
