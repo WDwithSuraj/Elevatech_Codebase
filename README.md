@@ -11,6 +11,13 @@ A wesite for buying different variety of electronics products and gadgets.
 ELEVATECH is an online platform dedicated to providing a seamless shopping experience for electronic products such as mobile phones, laptops, and headphones. Our website offers a wide range of top-quality electronic devices from leading brands, ensuring that customers can find the perfect products to meet their needs.
 With ELEVATECH, customers can explore an extensive catalog of mobile phones, laptops, and headphones, complete with detailed product descriptions, specifications, and customer reviews. Our user-friendly interface and intuitive search functionality make it easy for visitors to browse and find their desired electronic items.
 
+#TechStack
+*For FrontEnd : HTML, CSS, JS, REACT,TYPESCRIPT
+*For Backend : jsonserver, api, firebase
+*For Styling : Styled Components
+*For Deploying : Netlify
+
+
 
 
 
