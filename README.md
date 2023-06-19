@@ -27,6 +27,10 @@ With ELEVATECH, customers can explore an extensive catalog of mobile phones, lap
 * pagination
 * Payment
 
+# Screenshots
+
+![Screenshot (1019)](https://github.com/WDwithSuraj/boorish-earthquake-4077/assets/115460439/46222686-cf81-4c7f-a9e5-31c06d170ad2)
+
 
 
 
