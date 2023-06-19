@@ -12,10 +12,10 @@ ELEVATECH is an online platform dedicated to providing a seamless shopping exper
 With ELEVATECH, customers can explore an extensive catalog of mobile phones, laptops, and headphones, complete with detailed product descriptions, specifications, and customer reviews. Our user-friendly interface and intuitive search functionality make it easy for visitors to browse and find their desired electronic items.
 
 #TechStack
-*For FrontEnd : HTML, CSS, JS, REACT,TYPESCRIPT
-*For Backend : jsonserver, api, firebase
-*For Styling : Styled Components
-*For Deploying : Netlify
+* For FrontEnd : HTML, CSS, JS, REACT,TYPESCRIPT
+* For Backend : jsonserver, api, firebase
+* For Styling : Styled Components
+* For Deploying : Netlify
 
 
 
