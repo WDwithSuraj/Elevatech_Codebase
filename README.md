@@ -17,6 +17,16 @@ With ELEVATECH, customers can explore an extensive catalog of mobile phones, lap
 * For Styling : Styled Components
 * For Deploying : Netlify
 
+# Features
+* HomePage, Search, Carousel, Footer
+* Search Functionallity
+* Login & Sign Up
+* Product Page
+* Cart
+* filtering,sorting.
+* pagination
+* Payment
+
 
 
 
