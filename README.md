@@ -1,5 +1,4 @@
 
-
 # ELEVATECH  - E-COMMERCE WEBSITE
 A wesite for buying different variety of electronics products and gadgets.
 
@@ -31,6 +30,8 @@ With ELEVATECH, customers can explore an extensive catalog of mobile phones, lap
 # Screenshots
 
 ![Screenshot 2023-06-19 135101](https://github.com/WDwithSuraj/boorish-earthquake-4077/assets/115460439/1266f71c-f181-4670-b093-c672067223c2)
+
+![Screenshot 2023-06-19 135507](https://github.com/WDwithSuraj/boorish-earthquake-4077/assets/115460439/97a9d4f1-8385-4325-bb42-e07e3a2091f0)
 
 ![Screenshot 2023-06-19 135223](https://github.com/WDwithSuraj/boorish-earthquake-4077/assets/115460439/c8f6d7cd-ac1d-499b-8e1b-1a8cd083db3b)
 
