@@ -73,7 +73,7 @@ const [userNameFirstLetter, setUserNameFirstLetter]  = useState('')
 
 
   useEffect(() => {
-    fetch(`https://shy-puce-binturong-ring.cyclic.app/electronics?q=${query}`)
+    fetch(`https://courageous-tan-skirt.cyclic.app/electronics?q=${query}`)
       .then((res) => res.json())
       .then((res) => {
         // console.log(res)

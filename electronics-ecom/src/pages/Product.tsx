@@ -43,7 +43,7 @@ export const Product = () => {
 
   const getProductData = (page: number, params: SearchParamsType) => {
     dispatch(fetchRequestAction())
-    axios.get(`https://shy-puce-binturong-ring.cyclic.app/electronics?_page=${page}&_limit=13`, { params })
+    axios.get(`https://courageous-tan-skirt.cyclic.app/electronics?_page=${page}&_limit=13`, { params })
       .then((res) => {
         dispatch(fetchSuccessAction(res.data))
 
