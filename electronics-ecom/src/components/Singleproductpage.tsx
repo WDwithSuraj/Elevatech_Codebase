@@ -31,7 +31,7 @@ const Singleproductpage = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        fetch(`https://shy-puce-binturong-ring.cyclic.app/electronics/${user_id}`)
+        fetch(`https://courageous-tan-skirt.cyclic.app/electronics/${user_id}`)
             .then((res) => {
                 return res.json()
             })
